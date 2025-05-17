@@ -13,7 +13,7 @@ export default async function Footer() {
   }
 
   return (
-    <footer className=" text-gray-600 py-12 md:py-16 relative bg-gray-100">
+    <footer className=" text-gray-600 pt-12 md:pt-16 relative bg-gray-100">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -98,17 +98,19 @@ export default async function Footer() {
             </form>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-gray-200 text-sm text-center">
+        <div className="mt-12 py-4 border-t border-gray-200 text-sm text-center">
           <p>
-            &copy; {new Date().getFullYear()} {settings.title} by{' '}
-            <a href="https://10up.com" className="underline hover:text-gray-900 transition-colors">
-              10up
+            &copy; {new Date().getFullYear()} {settings.title} gemaakt door{' '}
+            <a
+              href="https://boon-digital.nl"
+              className="underline hover:text-gray-900 transition-colors"
+            >
+              Boon Digital
             </a>
             . All rights reserved.
           </p>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-pink-500 to-blue-500"></div>
     </footer>
   );
 }

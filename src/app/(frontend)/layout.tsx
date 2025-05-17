@@ -11,6 +11,7 @@ import { SanityLive } from '@/lib/sanity/client/live';
 import { handleError } from './client-utils';
 import Main from '@/components/layout/Main';
 import Alert from '@/components/layout/Alert';
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled: isDraftMode } = await draftMode();
 
