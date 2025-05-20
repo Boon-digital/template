@@ -1,0 +1,78 @@
+/* src/styles/base/_typography.scss */
+
+/* Heading styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.25rem;
+}
+
+h3 {
+  font-size: 1.875rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+/* Body text styles */
+p {
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+/* Lists */
+ul,
+ol {
+  margin: 0 0 1rem 1.5rem;
+  color: var(--color-text);
+}
+
+/* Link styles */
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-secondary-dark);
+    text-decoration: underline;
+  }
+}
+
+/* Simple text elements */
+strong,
+b {
+  font-weight: 700;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+small {
+  font-size: 0.875em;
+}
