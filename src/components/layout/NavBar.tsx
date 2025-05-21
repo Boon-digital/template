@@ -1,17 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { Button } from '../ui/button';
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu';
-import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import { SettingsQueryResult } from '@/sanity.types';
 import { getLinkByLinkObject } from '@/lib/links';
@@ -24,73 +13,79 @@ export default function NavBar({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="flex items-center justify-end flex-1">
+    <div className="navbar">
       {/* Desktop Navigation */}
-      <div className="hidden md:flex items-center space-x-6">
-        <NavigationMenu>
-          <NavigationMenuList>
+      <div className="navbar__menu">
+        <nav>
+          <ul className="navbar__items">
             {menuItems.map((item) => (
-              <NavigationMenuItem key={item._key}>
+              <li className="navbar__item" key={item._key}>
                 {item.childMenu ? (
                   // Dropdown menu for items with children
-                  <>
-                    <NavigationMenuTrigger className={cn(navigationMenuTriggerStyle())}>
+                  <div>
+                    <button className="navbar__dropdown-toggle">
                       {item.text}
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <div className="p-1 w-[200px]">
-                        {item.childMenu.map((child) => (
-                          <NavigationMenuLink key={child._key} asChild>
-                            <Link
-                              href={child.link ? getLinkByLinkObject(child.link) || '#' : '#'}
-                              className="block p-2 hover:bg-gray-100 rounded-md"
-                              {...(child.link?.openInNewTab
-                                ? { target: '_blank', rel: 'noopener noreferrer' }
-                                : {})}
-                            >
-                              {child.text}
-                            </Link>
-                          </NavigationMenuLink>
-                        ))}
-                      </div>
-                    </NavigationMenuContent>
-                  </>
+                      <svg
+                        className="navbar__dropdown-icon"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </button>
+                    <div className="navbar__dropdown-menu">
+                      {item.childMenu.map((child) => (
+                        <Link
+                          key={child._key}
+                          href={child.link ? getLinkByLinkObject(child.link) || '#' : '#'}
+                          className="navbar__dropdown-item"
+                          {...(child.link?.openInNewTab
+                            ? { target: '_blank', rel: 'noopener noreferrer' }
+                            : {})}
+                        >
+                          {child.text}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 ) : (
                   // Simple link for items without children
-                  <NavigationMenuLink asChild>
-                    <Link
-                      href={item.link ? getLinkByLinkObject(item.link) || '#' : '#'}
-                      className={cn(navigationMenuTriggerStyle(), 'cursor-pointer')}
-                      {...(item.link?.openInNewTab
-                        ? { target: '_blank', rel: 'noopener noreferrer' }
-                        : {})}
-                    >
-                      {item.text}
-                    </Link>
-                  </NavigationMenuLink>
+                  <Link
+                    href={item.link ? getLinkByLinkObject(item.link) || '#' : '#'}
+                    className="navbar__link"
+                    {...(item.link?.openInNewTab
+                      ? { target: '_blank', rel: 'noopener noreferrer' }
+                      : {})}
+                  >
+                    {item.text}
+                  </Link>
                 )}
-              </NavigationMenuItem>
+              </li>
             ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+          </ul>
+        </nav>
 
-        <div className="flex space-x-2">
-          <Button asChild variant="default">
-            <Link href={'/'}>Get Started</Link>
-          </Button>
-          <Button asChild variant="outline">
-            <Link href={'/'}>Log In</Link>
-          </Button>
+        <div className="navbar__actions">
+          <Link href={'/'} className="button button--primary">
+            Get Started
+          </Link>
+          <Link href={'/'} className="button button--outline">
+            Log In
+          </Link>
         </div>
       </div>
 
       {/* Mobile Menu Button */}
-      <button
-        className="md:hidden text-gray-800"
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-      >
+      <button className="navbar__toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
         <svg
-          className="w-6 h-6"
+          className="navbar__toggle-icon"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -107,24 +102,23 @@ export default function NavBar({
 
       {/* Mobile Menu */}
       <div
-        className={cn(
-          'md:hidden absolute top-full left-0 right-0 bg-white shadow-lg z-50 transform transition-all duration-300 ease-in-out origin-top',
-          isMobileMenuOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0',
-        )}
+        className={`navbar__mobile-menu ${
+          isMobileMenuOpen ? 'navbar__mobile-menu--open' : 'navbar__mobile-menu--closed'
+        }`}
       >
-        <div className="px-4 py-2">
+        <div className="navbar__mobile-menu-content">
           {menuItems.map((item) => (
-            <div key={item._key}>
+            <div className="navbar__mobile-item" key={item._key}>
               {item.childMenu ? (
                 // Parent item with children
                 <>
-                  <div className="py-2 px-4 font-medium">{item.text}</div>
-                  <div className="pl-4">
+                  <div className="navbar__mobile-dropdown">{item.text}</div>
+                  <div className="navbar__mobile-dropdown-content">
                     {item.childMenu.map((child) => (
                       <Link
                         key={child._key}
                         href={child.link ? getLinkByLinkObject(child.link) || '#' : '#'}
-                        className="block py-2 px-4 hover:bg-gray-100 rounded-md"
+                        className="navbar__mobile-link"
                         onClick={() => setIsMobileMenuOpen(false)}
                         {...(child.link?.openInNewTab
                           ? { target: '_blank', rel: 'noopener noreferrer' }
@@ -139,7 +133,7 @@ export default function NavBar({
                 // Single menu item
                 <Link
                   href={item.link ? getLinkByLinkObject(item.link) || '#' : '#'}
-                  className="block py-2 px-4 hover:bg-gray-100 rounded-md"
+                  className="navbar__mobile-link"
                   onClick={() => setIsMobileMenuOpen(false)}
                   {...(item.link?.openInNewTab
                     ? { target: '_blank', rel: 'noopener noreferrer' }
@@ -150,13 +144,13 @@ export default function NavBar({
               )}
             </div>
           ))}
-          <div className="flex flex-col space-y-2 mt-4 p-4">
-            <Button asChild variant="default">
-              <Link href={'/'}>Get Started</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href={'/'}>Log In</Link>
-            </Button>
+          <div className="navbar__mobile-actions">
+            <Link href={'/'} className="button button--primary">
+              Get Started
+            </Link>
+            <Link href={'/'} className="button button--outline">
+              Log In
+            </Link>
           </div>
         </div>
       </div>

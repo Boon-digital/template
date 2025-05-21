@@ -2,38 +2,48 @@ import { Image } from 'next-sanity/image';
 import { urlForImage } from '@/lib/sanity/client/utils';
 import { type PortableTextBlock } from 'next-sanity';
 import PortableText from '@/components/modules/PortableText';
-import ButtonsGroup from '../modules/ButtonsGroup';
+import { Button } from '../ui/button';
+import Link from 'next/link';
+import { getLinkByLinkObject } from '@/lib/links';
 import type { HeroSection } from './types';
 
 export default function HeroSection({ section }: { section: HeroSection }) {
   return (
-    <section className="py-10 md:py-14 bg-white">
-      <div className="container mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">{section?.heading}</h1>
-            <PortableText className="text-xl" value={section.text as PortableTextBlock[]} />
+    <section className="hero">
+      <div className="container">
+        <div className="hero__grid">
+          <div className="hero__content">
+            <h1 className="hero__content-title">{section?.heading}</h1>
+            <div className="hero__content-text">
+              <PortableText value={section.text as PortableTextBlock[]} />
+            </div>
 
-            {section?.buttons && section?.buttons.length ? (
-              <div className="mt-8 gap-4 flex">
-                {section?.buttons.length > 1 && (
-                  <ButtonsGroup className="w-full md:w-auto" buttons={section?.buttons} />
-                )}
+            {section?.buttons && section?.buttons.length > 0 && (
+              <div className="hero__buttons">
+                {section.buttons.map((button) => (
+                  <Button asChild variant={button.variant} size="xl" key={button._key}>
+                    <Link
+                      href={button.link ? getLinkByLinkObject(button.link) || '' : ''}
+                      target={button.link?.openInNewTab ? '_blank' : '_self'}
+                    >
+                      {button.text}
+                    </Link>
+                  </Button>
+                ))}
               </div>
-            ) : null}
+            )}
           </div>
-          <div className="relative">
+
+          <div className="hero__media">
             {section.image?.asset && (
               <Image
                 src={urlForImage(section.image)?.width(1000).height(667).url() as string}
                 alt={section?.image?.alt || ''}
                 width={600}
                 height={400}
-                className="rounded-4xl shadow-xl"
+                className="hero__media-image"
               />
             )}
-            <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-pink-500 rounded-full opacity-50"></div>
-            <div className="absolute -top-4 -right-4 w-16 h-16 bg-blue-500 rounded-full opacity-50"></div>
           </div>
         </div>
       </div>
