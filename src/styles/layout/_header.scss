@@ -1,27 +1,27 @@
-/* src/styles/layout/_header.scss */
-
 .header {
-  background-color: white;
+  background: var(--color-background);
+  // background: transparent;
   color: var(--color-text);
-  padding: 1rem 0;
   position: relative;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  a {
+    text-decoration: none;
+  }
 
   &__container {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    // border-bottom: 1px solid var(--color-border);
   }
-
   &__logo-container {
     display: flex;
     align-items: center;
   }
-
   &__logo {
     margin-right: 1rem;
   }
-
   &__title {
     font-size: 1.125rem;
     font-weight: 700;
@@ -30,7 +30,6 @@
       font-size: 1.5rem;
     }
   }
-
   &__link {
     display: flex;
     align-items: center;

@@ -22,6 +22,38 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'alertSettings',
+      title: 'Alert Bar',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'enabled',
+          title: 'Enable Alert',
+          type: 'boolean',
+          initialValue: false,
+        }),
+        defineField({
+          name: 'text',
+          title: 'Alert Text',
+          type: 'string',
+          description: 'Text content for the alert bar at the top of the site',
+        }),
+        defineField({
+          name: 'linkText',
+          title: 'Link Text',
+          type: 'string',
+          description: 'Text for the clickable link in the alert (optional)',
+        }),
+        defineField({
+          name: 'linkUrl',
+          title: 'Link URL',
+          type: 'string',
+          description: 'URL for the link in the alert (optional)',
+        }),
+      ],
+    }),
+
+    defineField({
       name: 'menu',
       type: 'array',
       of: [{ type: 'menuItem' }],

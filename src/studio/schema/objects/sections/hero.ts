@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity';
 import { DocumentTextIcon } from '@sanity/icons';
+import { createRadioListLayout } from '@/utils/schema';
 
 export default defineType({
   name: 'hero',
@@ -33,16 +34,25 @@ export default defineType({
       of: [{ type: 'button' }],
       validation: (Rule) => Rule.min(2).max(4),
     }),
+    defineField({
+      name: 'layout',
+      title: 'Layout Style',
+      type: 'string',
+      options: createRadioListLayout(['default', 'centered', 'fullscreen']),
+      initialValue: 'default',
+      description: 'Choose the layout style for this hero section',
+    }),
   ],
   preview: {
     select: {
       title: 'heading',
       image: 'image',
+      layout: 'layout',
     },
-    prepare({ title, image }) {
+    prepare({ title, image, layout }) {
       return {
         title: title || 'Untitled',
-        content: 'Hero text',
+        subtitle: `Hero (${layout || 'default'} layout)`,
         media: image || DocumentTextIcon,
       };
     },

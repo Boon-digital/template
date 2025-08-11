@@ -2,6 +2,7 @@
 @use 'base/reset';
 @use 'base/variables';
 @use 'base/typography';
+@use 'base/images';
 
 /* Utils */
 @use 'utils/mixins';
@@ -14,11 +15,6 @@
 @use 'layout/footer';
 
 /* Components */
-// @use 'components/button';
-// @use 'components/card';
-// @use 'components/form';
-// @use 'components/badge';
-// @use 'components/pagination';
 @use 'components/button';
 @use 'components/navbar';
 @use 'components/alert';

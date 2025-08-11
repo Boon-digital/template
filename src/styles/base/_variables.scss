@@ -1,15 +1,25 @@
 :root {
-  /* Colors */
-  --color-primary: #f472b6;
-  --color-primary-dark: #db2777;
-  --color-secondary: #6ba3fe;
-  --color-secondary-dark: #476fdb;
+  --color-primary: #fca311;
+  --color-primary-dark: #de8901;
+
+  --color-secondary: #14213d;
+  --color-secondary-dark: #0b1324;
 
   --color-text: #111827;
   --color-text-light: #6b7280;
   --color-background: #ffffff;
   --color-background-alt: #f9fafb;
+  --color-border: #eeeeee;
 
-  --color-border: #e5e7eb;
-  --color-border-dark: #d1d5db;
+  --radius-button: 10px;
+  --radius-image: 24px;
+
+  //overwrite values for darker backgrounds
+  .darkmode {
+    --color-text: #ffffff;
+    --color-text-light: #d6d6d6;
+    --color-background: #1d1d1d;
+    --color-background-alt: #3f3f3f;
+    --color-border: #555555;
+  }
 }

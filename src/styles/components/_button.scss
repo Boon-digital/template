@@ -1,12 +1,10 @@
-/* src/styles/components/_button.scss */
-
 .button {
   /* Base button styles */
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-button);
   font-weight: 500;
   transition:
     background-color 0.15s,
@@ -14,12 +12,14 @@
     border-color 0.15s,
     box-shadow 0.15s;
   cursor: pointer;
-
   /* Default size */
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
   height: 2.25rem;
-
+  border: 0px;
+  &:hover {
+    text-decoration: none;
+  }
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -30,9 +30,9 @@
   &--default {
     background-color: var(--color-primary);
     color: white;
-
     &:hover {
       background-color: var(--color-primary-dark);
+      color: white;
     }
   }
 
@@ -42,6 +42,7 @@
 
     &:hover {
       background-color: var(--color-destructive-dark);
+      color: white;
     }
   }
 
@@ -52,6 +53,7 @@
 
     &:hover {
       background-color: var(--color-background-alt);
+      color: var(--color-text);
     }
   }
 
@@ -61,6 +63,7 @@
 
     &:hover {
       background-color: var(--color-secondary-dark);
+      color: white;
     }
   }
 
@@ -69,6 +72,7 @@
 
     &:hover {
       background-color: var(--color-background-alt);
+      color: var(--color-text);
     }
   }
 
@@ -76,10 +80,6 @@
     background-color: transparent;
     color: var(--color-primary);
     padding: 0;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 
   &--gradient {

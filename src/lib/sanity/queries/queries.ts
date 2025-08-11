@@ -11,9 +11,14 @@ import {
 export const settingsQuery = defineQuery(`*[_type == "settings"][0]{
   title,
   description,
+  alertSettings {
+    enabled,
+    text,
+    linkText,
+    linkUrl
+  },
   ${menuFragment}
 }`);
-
 export const homePageQuery = defineQuery(`*[_type == "homePage"][0]{
   _id,
   _type,
