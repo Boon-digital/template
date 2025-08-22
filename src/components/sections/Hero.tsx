@@ -36,16 +36,22 @@ export default function HeroSection({ section }: { section: HeroSection }) {
 
             {section?.buttons && section?.buttons.length > 0 && (
               <div className="hero__buttons">
-                {section.buttons.map((button) => (
-                  <Button asChild variant={button.variant} size="xl" key={button._key}>
-                    <Link
-                      href={button.link ? getLinkByLinkObject(button.link) || '' : ''}
-                      target={button.link?.openInNewTab ? '_blank' : '_self'}
-                    >
-                      {button.text}
-                    </Link>
-                  </Button>
-                ))}
+                {section.buttons.map((button) => {
+                  // Map the variant to match Button component expectations
+                  const variant =
+                    button.variant === 'default' ? 'primary' : button.variant || 'primary';
+
+                  return (
+                    <Button asChild variant={variant} size="xl" key={button._key}>
+                      <Link
+                        href={button.link ? getLinkByLinkObject(button.link) || '' : ''}
+                        target={button.link?.openInNewTab ? '_blank' : '_self'}
+                      >
+                        {button.text}
+                      </Link>
+                    </Button>
+                  );
+                })}
               </div>
             )}
           </div>

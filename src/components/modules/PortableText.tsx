@@ -27,15 +27,12 @@ type HeadingProps = PropsWithChildren<{
 function Heading({ as, id, children, className = '' }: HeadingProps) {
   const Element = as;
   return (
-    <Element className={cn('relative group', className)}>
+    <Element className={cn('portable-text__heading', className)}>
       {children}
-      <a
-        href={`#${id}`}
-        className="absolute left-0 top-0 bottom-0 -ml-6 flex items-center opacity-0 group-hover:opacity-100 transition-opacity"
-      >
+      <a href={`#${id}`} className="portable-text__heading-link">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-4 w-4"
+          className="portable-text__heading-icon"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -61,86 +58,52 @@ export default function CustomPortableText({
 }) {
   const components: PortableTextComponents = {
     block: {
-      normal: ({ children }) => (
-        <p className="text-lg leading-relaxed text-gray-700 mb-6">{children}</p>
-      ),
+      normal: ({ children }) => <p className="portable-text__paragraph">{children}</p>,
       h1: ({ children, value }) => (
-        <Heading
-          as="h1"
-          id={parseChildrenToSlug(value.children)}
-          className="text-4xl md:text-5xl font-bold mb-8 text-gray-900 scroll-mt-20"
-        >
+        <Heading as="h1" id={parseChildrenToSlug(value.children)} className="portable-text__h1">
           {children}
         </Heading>
       ),
       h2: ({ children, value }) => (
-        <Heading
-          as="h2"
-          id={parseChildrenToSlug(value.children)}
-          className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 scroll-mt-20"
-        >
+        <Heading as="h2" id={parseChildrenToSlug(value.children)} className="portable-text__h2">
           {children}
         </Heading>
       ),
       h3: ({ children, value }) => (
-        <Heading
-          as="h3"
-          id={parseChildrenToSlug(value.children)}
-          className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 scroll-mt-20"
-        >
+        <Heading as="h3" id={parseChildrenToSlug(value.children)} className="portable-text__h3">
           {children}
         </Heading>
       ),
       h4: ({ children, value }) => (
-        <Heading
-          as="h4"
-          id={parseChildrenToSlug(value.children)}
-          className="text-xl md:text-2xl font-bold mb-4 text-gray-900 scroll-mt-20"
-        >
+        <Heading as="h4" id={parseChildrenToSlug(value.children)} className="portable-text__h4">
           {children}
         </Heading>
       ),
       h5: ({ children, value }) => (
-        <Heading
-          as="h5"
-          id={parseChildrenToSlug(value.children)}
-          className="text-lg md:text-xl font-bold mb-4 text-gray-900 scroll-mt-20"
-        >
+        <Heading as="h5" id={parseChildrenToSlug(value.children)} className="portable-text__h5">
           {children}
         </Heading>
       ),
       h6: ({ children, value }) => (
-        <Heading
-          as="h6"
-          id={parseChildrenToSlug(value.children)}
-          className="text-base md:text-lg font-bold mb-4 text-gray-900 scroll-mt-20"
-        >
+        <Heading as="h6" id={parseChildrenToSlug(value.children)} className="portable-text__h6">
           {children}
         </Heading>
       ),
       blockquote: ({ children }) => (
-        <blockquote className="border-l-4 border-gray-300 pl-4 my-6 italic text-gray-600">
-          {children}
-        </blockquote>
+        <blockquote className="portable-text__blockquote">{children}</blockquote>
       ),
     },
     list: {
-      bullet: ({ children }) => (
-        <ul className="list-disc list-outside ml-6 mb-6 space-y-2 text-gray-700">{children}</ul>
-      ),
-      number: ({ children }) => (
-        <ol className="list-decimal list-outside ml-6 mb-6 space-y-2 text-gray-700">{children}</ol>
-      ),
+      bullet: ({ children }) => <ul className="portable-text__ul">{children}</ul>,
+      number: ({ children }) => <ol className="portable-text__ol">{children}</ol>,
     },
     listItem: {
-      bullet: ({ children }) => <li className="pl-2">{children}</li>,
-      number: ({ children }) => <li className="pl-2">{children}</li>,
+      bullet: ({ children }) => <li className="portable-text__li">{children}</li>,
+      number: ({ children }) => <li className="portable-text__li">{children}</li>,
     },
     marks: {
-      code: ({ children }) => (
-        <code className="bg-gray-100 rounded px-1 py-0.5 font-mono text-sm">{children}</code>
-      ),
-      em: ({ children }) => <em className="italic">{children}</em>,
+      code: ({ children }) => <code className="portable-text__code">{children}</code>,
+      em: ({ children }) => <em className="portable-text__em">{children}</em>,
       link: ({
         children,
         value,
@@ -155,16 +118,16 @@ export default function CustomPortableText({
         }
 
         return (
-          <Link link={customLink} className="text-primary hover:no-underline underline">
+          <Link link={customLink} className="portable-text__link">
             {children}
           </Link>
         );
       },
-      strong: ({ children }) => <strong className="font-bold">{children}</strong>,
-      'strike-through': ({ children }) => <del className="line-through">{children}</del>,
-      underline: ({ children }) => <u className="underline">{children}</u>,
-      sup: ({ children }) => <sup className="text-xs">{children}</sup>,
-      sub: ({ children }) => <sub className="text-xs">{children}</sub>,
+      strong: ({ children }) => <strong className="portable-text__strong">{children}</strong>,
+      'strike-through': ({ children }) => <del className="portable-text__del">{children}</del>,
+      underline: ({ children }) => <u className="portable-text__u">{children}</u>,
+      sup: ({ children }) => <sup className="portable-text__sup">{children}</sup>,
+      sub: ({ children }) => <sub className="portable-text__sub">{children}</sub>,
     },
     types: {
       image: (props) => {
@@ -174,13 +137,13 @@ export default function CustomPortableText({
         }
 
         return (
-          <div className="my-8 rounded-lg overflow-hidden shadow-lg">
+          <div className="portable-text__image">
             <Image
               width="1000"
               height="667"
               src={urlForImage(value)?.width(1000).height(667).url() as string}
               alt={value?.alt || ''}
-              className="w-full h-auto"
+              className="portable-text__image-img"
             />
           </div>
         );
@@ -189,7 +152,7 @@ export default function CustomPortableText({
   };
 
   return (
-    <div className={className}>
+    <div className={cn('portable-text', className)}>
       <PortableText components={components} value={value} />
     </div>
   );

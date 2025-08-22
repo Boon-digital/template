@@ -20,8 +20,6 @@ function generatePaginationItems(
   totalPages: number,
   pagesToShow: number,
 ): number[] {
-  if (totalPages <= 0 || pagesToShow <= 0) return [];
-
   const pagination: Set<number> = new Set();
 
   const sidePages = Math.floor(pagesToShow / 2);
@@ -68,7 +66,7 @@ export function ArchivePagination({
   const pages = generatePaginationItems(newCurrentPage, totalPages, itemsToShow);
 
   return (
-    <Pagination className="mt-10">
+    <Pagination className="archive-pagination">
       <PaginationContent>
         {previousPage && (
           <PaginationItem>

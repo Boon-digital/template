@@ -9,16 +9,20 @@ export default function CardGrid({
   section: CardGridSection;
 }) {
   return (
-    <section className="py-12 md:py-16 my-10 md:my-14 bg-gray-50 rounded-4xl ">
-      <div className="container mx-auto px-4">
-        <div className="max-w-2xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{heading}</h2>
-          <div className="text-xl text-gray-600">
-            <PortableText className="text-xl" value={content as PortableTextBlock[]} />
+    <section className="card-grid">
+      <div className="card-grid__container">
+        <div className="card-grid__header">
+          <h2 className="card-grid__heading">{heading}</h2>
+          <div className="card-grid__content">
+            <PortableText value={content as PortableTextBlock[]} />
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {cards?.map((card, index) => <Card key={index} card={card} />)}
+        <div className="card-grid__grid">
+          {cards?.map((card, index) => (
+            <div key={index} className="card-grid__item">
+              <Card card={card} />
+            </div>
+          ))}
         </div>
       </div>
     </section>

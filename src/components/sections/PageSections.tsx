@@ -9,6 +9,7 @@ import Hero from './Hero';
 import CTA from './CTA';
 import MediaText from './MediaText';
 import PostList from './PostList';
+import PostCardGrid from './PostCardGrid';
 import CardGrid from './CardGrid';
 import Divider from './Divider';
 import Subscribe from './Subscribe';
@@ -21,6 +22,7 @@ const SECTION_COMPONENTS: Record<PageSectionstype, ElementType> = {
   cta: CTA,
   subscribe: Subscribe,
   postList: PostList,
+  postCardGrid: PostCardGrid,
   cardGrid: CardGrid,
   divider: Divider,
 } as const;

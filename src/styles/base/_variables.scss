@@ -11,8 +11,13 @@
   --color-background-alt: #f9fafb;
   --color-border: #eeeeee;
 
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #4b5563;
+
   --radius-button: 10px;
   --radius-image: 24px;
+
+  --container-max-width: 1200px;
 
   //overwrite values for darker backgrounds
   .darkmode {
@@ -21,5 +26,7 @@
     --color-background: #1d1d1d;
     --color-background-alt: #3f3f3f;
     --color-border: #555555;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #d6d6d6;
   }
 }

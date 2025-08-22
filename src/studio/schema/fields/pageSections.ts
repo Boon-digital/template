@@ -4,10 +4,20 @@ import cta from '../objects/sections/cta';
 import divider from '../objects/sections/divider';
 import hero from '../objects/sections/hero';
 import mediaText from '../objects/sections/mediaText';
+import postCardGrid from '../objects/sections/postCardGrid';
 import postList from '../objects/sections/postList';
 import subscribe from '../objects/sections/subscribe';
 
-const pageSectionsObjects = [cardGrid, cta, divider, hero, mediaText, postList, subscribe];
+const pageSectionsObjects = [
+  cardGrid,
+  cta,
+  divider,
+  hero,
+  mediaText,
+  postCardGrid,
+  postList,
+  subscribe,
+];
 
 export default defineField({
   name: 'pageSections',

@@ -133,9 +133,9 @@ export const heroSectionFragment = /* groq */ `
 export const mediaTextSectionFragment = /* groq */ `
   _type,
   heading,
-  text,
-  media,
-  mediaPosition,
+  content,
+  imagePosition,
+  image,
   ${buttonsFragment}
 `;
 
@@ -189,6 +189,15 @@ export const postListSectionFragment = /* groq */ `
     }
 `;
 
+export const postCardGridSectionFragment = /* groq */ `
+    _type,
+    heading,
+    numberOfPosts,
+    "posts": *[_type == 'post'] | order(_createdAt desc, _id desc) [0...20] {
+      ${postFragment}
+    }
+`;
+
 export const dividerSectionFragment = /* groq */ `
   _type,
   height
@@ -232,6 +241,7 @@ export const pageBuilderFragment = /* groq */ `
     _type == 'hero' => {${heroSectionFragment}},
     _type == 'mediaText' => {${mediaTextSectionFragment}},
     _type == 'postList' => {${postListSectionFragment}},
+    _type == 'postCardGrid' => {${postCardGridSectionFragment}},
     _type == 'subscribe' => {${subscribeSectionFragment}}
   },
 `;

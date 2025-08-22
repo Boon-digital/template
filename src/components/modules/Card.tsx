@@ -8,10 +8,10 @@ export default function Card({
   card: NonNullable<CardGridSection['cards']>[number];
 }) {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
-      <h3 className="text-xl font-semibold mb-6">{heading}</h3>
-      <div className="text-gray-600">
-        <PortableText className="text-xl" value={content as PortableTextBlock[]} />
+    <div className="card">
+      <h3 className="card__heading">{heading}</h3>
+      <div className="card__content">
+        <PortableText value={content as PortableTextBlock[]} />
       </div>
     </div>
   );

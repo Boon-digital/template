@@ -18,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable}`}>
-      {children}
+      <body className="font-inter bg-white text-black" suppressHydrationWarning={true}>
+        {children}
+      </body>
     </html>
   );
 }

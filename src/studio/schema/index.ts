@@ -7,6 +7,7 @@ import hero from './objects/sections/hero';
 import category from './documents/category';
 import mediaText from './objects/sections/mediaText';
 import postList from './objects/sections/postList';
+import postCardGrid from './objects/sections/postCardGrid';
 import cardGrid from './objects/sections/cardGrid';
 import settings from './singletons/settings';
 import blockContent from './objects/blockContent';
@@ -36,6 +37,7 @@ export const schemaTypes = [
   hero,
   mediaText,
   postList,
+  postCardGrid,
   card,
   cardGrid,
   divider,

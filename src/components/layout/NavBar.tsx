@@ -73,12 +73,12 @@ export default function NavBar({
         </nav>
 
         <div className="navbar__actions">
-          <Link href={'/'} className="button button--primary">
-            Get Started
+          <Link href={'/contact'} className="button button--primary">
+            Contact
           </Link>
-          <Link href={'/'} className="button button--outline">
+          {/* <Link href={'/'} className="button button--outline">
             Log In
-          </Link>
+          </Link> */}
         </div>
       </div>
 

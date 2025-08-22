@@ -1,0 +1,15 @@
+.post-river {
+  &__posts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  &__pagination {
+    margin-top: 3rem;
+  }
+}
+
+.archive-pagination {
+  margin-top: 2.5rem;
+}

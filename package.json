@@ -15,9 +15,12 @@
     "typecheck": "tsc --noEmit",
     "watch-typegen": "tsx watch-typegen.ts",
     "test": "vitest",
+    "upload-placeholder": "node scripts/upload-placeholder-image.js",
+    "add-placeholder": "node scripts/add-placeholder-section.js",
     "prepare": "husky install"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.59.0",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-navigation-menu": "^1.2.5",
     "@radix-ui/react-slot": "^1.1.2",
@@ -28,6 +31,7 @@
     "@sanity/vision": "^3.81.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "^17.2.1",
     "lucide-react": "^0.476.0",
     "next": "^15.2.4",
     "next-sanity": "^9.9.6",

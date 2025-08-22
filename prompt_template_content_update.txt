@@ -1,0 +1,31 @@
+I want to [TASK DESCRIPTION] through the Sanity API.
+
+**Context:**
+- Sanity CMS project with Next.js frontend
+- API keys in .env.local (SANITY_API_WRITE_TOKEN)
+- Existing schema and components
+- /ai-instructions folder with documented learnings from previous tasks
+
+**Task Details:**
+- Content type: [TYPE]
+- Target location: [LOCATION]
+- Required fields: [LIST FIELDS]
+- Special requirements: [IMAGES, REFERENCES, ETC.]
+
+**Previous Learnings to Apply:**
+- Button URLs must be strings, not booleans
+- Image fields require proper asset references
+- Check /ai-instructions folder for relevant patterns
+- Follow documented validation practices
+
+**Expected Outcome:**
+- [DESCRIBE WHAT SHOULD BE CREATED/UPDATED]
+- [ANY SPECIFIC VALIDATION REQUIREMENTS]
+- [REUSABLE COMPONENTS FOR FUTURE USE]
+
+Please:
+1. Check /ai-instructions folder for relevant documentation
+2. Follow established patterns and validation practices
+3. Create reusable code snippets if applicable
+4. Log the process and update documentation
+5. Verify the result works correctly

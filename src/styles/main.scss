@@ -7,7 +7,6 @@
 /* Utils */
 @use 'utils/mixins';
 @use 'utils/functions';
-// @use 'utils/helpers';
 
 /* Layout */
 @use 'layout/grid';
@@ -18,6 +17,26 @@
 @use 'components/button';
 @use 'components/navbar';
 @use 'components/alert';
+@use 'components/modules/card';
+@use 'components/modules/post-card';
+@use 'components/modules/byline';
+@use 'components/modules/read-time';
+@use 'components/modules/cover-image';
+@use 'components/modules/portable-text';
+@use 'components/modules/buttons-group';
 
-/* Section */
+/* UI Components */
+@use 'components/ui/pagination';
+@use 'components/ui/badge';
+
+/* Sections */
 @use 'components/sections/hero';
+@use 'components/sections/media-text';
+@use 'components/sections/card-grid';
+@use 'components/sections/post-list';
+@use 'components/sections/post-river';
+
+/* Templates */
+@use 'components/templates/post';
+@use 'components/templates/page';
+@use 'components/templates/person-archive-byline';

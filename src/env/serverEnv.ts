@@ -5,6 +5,7 @@ import * as v from 'valibot';
 
 const envSchema = {
   SANITY_API_READ_TOKEN: v.pipe(v.string(), v.minLength(1)),
+  SANITY_API_WRITE_TOKEN: v.pipe(v.string(), v.minLength(1)),
   MAX_STATIC_PARAMS: v.pipe(
     v.string(),
     v.transform(parseInt),

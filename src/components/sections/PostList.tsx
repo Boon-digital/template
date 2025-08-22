@@ -13,19 +13,21 @@ export default function PostListSection({ section }: { section: PostListSection 
   const numberOfPosts = section.numberOfPosts ?? 3;
 
   return (
-    <section className="py-10 md:py-14">
-      <div className="container mx-auto">
-        <div className="max-w-2xl mx-auto text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">{section?.heading}</h2>
-          <p className="text-gray-600">Latest updates and insights from our team</p>
+    <section className="post-list">
+      <div className="post-list__container">
+        <div className="post-list__header">
+          <h2 className="post-list__heading">{section?.heading}</h2>
+          <p className="post-list__subtitle">Latest updates and insights from our team</p>
         </div>
-        <div className="max-w-4xl mx-auto space-y-12">
-          {posts.slice(0, numberOfPosts).map((post) => (
-            <PostCard key={post._id} post={post} />
-          ))}
+        <div className="post-list__content">
+          <div className="post-list__posts">
+            {posts.slice(0, numberOfPosts).map((post) => (
+              <PostCard key={post._id} post={post} />
+            ))}
+          </div>
         </div>
 
-        <div className="text-center mt-12">
+        <div className="post-list__cta">
           <Button asChild variant="gradient" size={'xl'}>
             <Link href={'/blog'}>
               View All Posts <ArrowRight className="w-4 h-4 ml-2" />

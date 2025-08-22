@@ -13,7 +13,7 @@ export default function CoverImage(props: CoverImageProps) {
 
   const image = source?.asset?._ref ? (
     <Image
-      className="rounded-2xl shadow-md transition-shadow object-cover"
+      className="cover-image__img"
       fill={true}
       alt={stegaClean(source?.alt) || ''}
       src={urlForImage(source)?.height(720).width(1280).auto('format').url() as string}
@@ -21,8 +21,8 @@ export default function CoverImage(props: CoverImageProps) {
       priority={priority}
     />
   ) : (
-    <div className="bg-slate-50" style={{ paddingTop: '100%' }} />
+    <div className="cover-image__placeholder" />
   );
 
-  return <div className="relative aspect-video">{image}</div>;
+  return <div className="cover-image">{image}</div>;
 }

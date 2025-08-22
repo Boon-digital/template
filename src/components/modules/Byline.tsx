@@ -9,13 +9,13 @@ import { PostCardFragmentType } from '@/lib/sanity/queries/fragments/fragment.ty
 
 export default function Byline({ post }: { post: PostCardFragmentType }) {
   return (
-    <div className="flex justify-between items-center">
-      <div className="flex items-center">
+    <div className="byline">
+      <div className="byline__author">
         {post.author?.image?.asset?._ref ? (
-          <div className="mr-4 h-9 w-9">
+          <div className="byline__avatar-container">
             <Image
               alt={post.author?.image?.alt || ''}
-              className="h-full rounded-full object-cover"
+              className="byline__avatar"
               height={48}
               width={48}
               src={
@@ -24,33 +24,34 @@ export default function Byline({ post }: { post: PostCardFragmentType }) {
             />
           </div>
         ) : (
-          <div className="mr-1">By </div>
+          <div className="byline__author-text">By </div>
         )}
-        <div className="flex flex-col">
+        <div className="byline__author-info">
           {post.author?.firstName && post.author?.lastName && post.author?.slug ? (
-            <Link
-              className="font-bold underline hover:text-gray-700 transition-colors"
-              href={`/author/${post.author.slug}`}
-            >
+            <Link className="byline__author-link" href={`/author/${post.author.slug}`}>
               {post.author.firstName} {post.author.lastName}
             </Link>
           ) : null}
-          <div className="text-gray-500 text-sm">
+          <div className="byline__date">
             <DateComponent dateString={post.date} />
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-end gap-2">
+      <div className="byline__meta">
         {post.categories && post.categories?.length > 0 && (
-          <div className="flex items-center gap-2">
+          <div className="byline__categories">
             {post.categories.map((category) => (
-              <Badge variant="default" asChild key={category._id}>
-                <Link href={`/category/${category.slug}`}>{category.title}</Link>
-              </Badge>
+              <Link
+                href={`/category/${category.slug}`}
+                key={category._id}
+                className="byline__category"
+              >
+                {category.title}
+              </Link>
             ))}
           </div>
         )}
-        <ReadTime wordCount={post.wordCount} />
+        <ReadTime wordCount={post.wordCount} className="byline__read-time" />
       </div>
     </div>
   );

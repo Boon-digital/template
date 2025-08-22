@@ -1,0 +1,56 @@
+.person-archive-byline {
+  margin-bottom: 3rem;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    @media (min-width: 768px) {
+      align-items: flex-start;
+      flex-direction: row;
+      gap: 3rem;
+    }
+  }
+
+  &__image-container {
+    position: relative;
+    max-width: 300px;
+    width: 100%;
+    height: 300px;
+  }
+
+  &__image {
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__header {
+    margin-bottom: 2rem;
+  }
+
+  &__title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+
+    @media (min-width: 768px) {
+      font-size: 3rem;
+    }
+  }
+}

@@ -10,10 +10,12 @@ export default defineType({
     defineField({
       name: 'heading',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'content',
       type: 'blockContent',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'imagePosition',
@@ -26,11 +28,32 @@ export default defineType({
       name: 'image',
       type: 'image',
       options: { hotspot: true },
+      validation: (Rule) => Rule.required(),
       fields: [
         defineField({
           name: 'alt',
           type: 'string',
           title: 'Alternative text',
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
+    }),
+    defineField({
+      name: 'cta',
+      type: 'object',
+      title: 'Call to Action',
+      fields: [
+        defineField({
+          name: 'label',
+          type: 'string',
+          title: 'Button Label',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'url',
+          type: 'string',
+          title: 'Button URL',
+          validation: (Rule) => Rule.required(),
         }),
       ],
     }),

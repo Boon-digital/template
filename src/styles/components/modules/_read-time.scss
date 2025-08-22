@@ -1,0 +1,12 @@
+.read-time {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+
+  &__icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.25rem;
+  }
+}

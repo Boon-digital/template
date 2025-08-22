@@ -13,60 +13,49 @@ export default function PostCard({ post }: { post: PostCardFragmentType }) {
   const featuredCategory = categories?.[0];
 
   return (
-    <article className="relative bg-white rounded-2xl shadow-sm overflow-hidden">
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="relative h-64 md:h-full">
+    <article className="post-card">
+      <div className="post-card__grid">
+        <div className="post-card__image-container">
           {image ? (
             <Image
               src={urlForImage(image)?.width(1000).height(667).url() as string}
               alt={image?.alt || 'Blog Post Image'}
-              style={{
-                objectFit: 'cover',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-              }}
               width={1000}
               height={667}
-              className="object-cover"
+              className="post-card__image"
             />
           ) : null}
         </div>
-        <div className="p-6 md:p-8 flex flex-col justify-center">
-          <div className="flex items-center space-x-4 mb-2">
+        <div className="post-card__content">
+          <div className="post-card__meta">
             {featuredCategory && (
-              <Badge variant="default" asChild>
-                <Link href={getDocumentLink(featuredCategory)}>{featuredCategory.title}</Link>
-              </Badge>
+              <Link href={getDocumentLink(featuredCategory)} className="post-card__category">
+                {featuredCategory.title}
+              </Link>
             )}
-            <ReadTime wordCount={post.wordCount} />
+            <ReadTime wordCount={post.wordCount} className="post-card__read-time" />
           </div>
           {date ? (
-            <time className="text-sm text-gray-500 mb-4">
+            <time className="post-card__date" dateTime={date}>
               {new Date(date).toLocaleDateString()}
             </time>
           ) : null}
-          <h3 className="text-2xl font-bold mb-">
-            <Link href={`/blog/${post.slug}`} className="hover:text-pink-600 transition-colors">
+          <h3 className="post-card__title">
+            <Link href={`/blog/${post.slug}`} className="post-card__title-link">
               {title}
             </Link>
           </h3>
-          {excerpt ? <p className="text-gray-600 mb-4">{excerpt}</p> : null}
-          <div className="mb-4">
+          {excerpt ? <p className="post-card__excerpt">{excerpt}</p> : null}
+          <div className="post-card__author">
             {author ? (
-              <span className="text-sm font-medium text-gray-700">
+              <span>
                 By {author?.firstName} {author?.lastName}
               </span>
             ) : null}
           </div>
-          <Link
-            href={`/blog/${post.slug}`}
-            className="flex items-center text-pink-600 font-medium hover:text-pink-700 transition-colors"
-          >
+          <Link href={`/blog/${post.slug}`} className="post-card__read-more">
             Read More
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <ArrowRight className="post-card__read-more-icon" />
           </Link>
         </div>
       </div>

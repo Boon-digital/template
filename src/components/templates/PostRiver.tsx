@@ -20,18 +20,20 @@ const PostRiver = ({
   const { results } = listingData;
 
   return (
-    <>
-      <div className="grid grid-cols-1 gap-10">
+    <div className="post-river">
+      <div className="post-river__posts">
         {results.map((post) => {
           return <PostCard key={post._id} post={post} />;
         })}
       </div>
-      <ArchivePagination
-        currentPage={currentPage}
-        linkBase={paginationBase}
-        totalPages={totalPages}
-      />
-    </>
+      <div className="post-river__pagination">
+        <ArchivePagination
+          currentPage={currentPage}
+          linkBase={paginationBase}
+          totalPages={totalPages}
+        />
+      </div>
+    </div>
   );
 };
 
